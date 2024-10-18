@@ -7,7 +7,7 @@ A custom React hook for managing form state. This hook simplifies form handling 
 To install the `useForm` hook, run:
 
 ```bash
-npm install useform-hook
+npm install useform
 ```
 
 ### `useForm`
@@ -41,7 +41,7 @@ The `prepareFormFields` function prepares the initial form fields.
 
 ```tsx
 import React from "react";
-import useForm, { prepareFormFields } from "my-useform-hook";
+import useForm, { prepareFormFields } from "useform";
 
 const initialFormFields = prepareFormFields([
   {

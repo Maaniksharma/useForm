@@ -1,5 +1,5 @@
 {
-    "name": "useform-hook",
+    "name": "useform",
     "version": "1.0.0",
     "description": "A custom React hook for managing form state",
     "main": "dist/index.js",
