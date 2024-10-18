@@ -1,5 +1,5 @@
 {
-    "name": "useform",
+    "name": "@maaniksharma/useform",
     "version": "1.0.0",
     "description": "A custom React hook for managing form state",
     "main": "dist/index.js",
@@ -10,7 +10,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/yourusername/my-useform-hook.git"
+        "url": "https://github.com/Maaniksharma/useForm"
     },
     "keywords": [
         "react",
