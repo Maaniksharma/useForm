@@ -1,0 +1,30 @@
+{
+    "name": "useform-hook",
+    "version": "1.0.0",
+    "description": "A custom React hook for managing form state",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc",
+        "prepublishOnly": "npm run build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yourusername/my-useform-hook.git"
+    },
+    "keywords": [
+        "react",
+        "hook",
+        "form",
+        "useForm"
+    ],
+    "author": "Maanik Sharma",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/react": "^18.3.11",
+        "typescript": "^4.0.0"
+    },
+    "peerDependencies": {
+        "react": "^16.8.0"
+    }
+}
