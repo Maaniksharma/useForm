@@ -7,7 +7,7 @@ A custom React hook for managing form state. This hook simplifies form handling 
 To install the `useForm` hook, run:
 
 ```bash
-npm install https://github.com/Maaniksharma/useForm
+npm install @maaniksharma/useform
 ```
 
 ### `useForm`
