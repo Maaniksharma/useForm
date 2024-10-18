@@ -41,51 +41,57 @@ The `prepareFormFields` function prepares the initial form fields.
 
 ```tsx
 import React from "react";
-import useForm, { prepareFormFields } from "@maaniksharma/useform";
+import FormHeader from "./FormHeader.ContactForm";
+import FormField from "./FormField.ContactForm";
+import { contactFormInputs } from "../../constants";
+import useForm, { prepareFormFields } from "../../hooks/useForm";
+import Button from "../ui/Button";
 
-const initialFormFields = prepareFormFields([
-  {
-    name: "username",
-    initialValue: "",
-    validateFunction: (value) => value.length > 0,
-  },
-  {
-    name: "email",
-    initialValue: "",
-    validateFunction: (value) => /\S+@\S+\.\S+/.test(value),
-  },
-]);
+const ContactForm = () => {
+  const initialFormFields = prepareFormFields(contactFormInputs);
 
-const MyFormComponent: React.FC = () => {
-  const { formFields, setFormFields, findFormIndex } =
+  const { formFields, changeValue, validateValue, getFormFieldValue } =
     useForm(initialFormFields);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    const index = findFormIndex(name);
-    const updatedFormFields = [...formFields];
-    updatedFormFields[index].value = value;
-    setFormFields(updatedFormFields);
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    const isValid = formFields.every((field) => validateValue(field.name));
+    if (isValid) {
+      // Handle form submission
+      console.log(formFields);
+      console.log("Form validation success");
+    } else {
+      console.log(formFields);
+      console.log("Form validation failed");
+    }
   };
 
   return (
-    <form>
-      {formFields.map((field) => (
-        <div key={field.name}>
-          <label>{field.name}</label>
-          <input
-            type="text"
-            name={field.name}
-            value={field.value}
-            onChange={handleChange}
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-[20px] p-[16px] bg-primary-100 lg:w-[732px] items-start"
+    >
+      <FormHeader />
+      <div className="w-full flex flex-col gap-[16px] pl-[6px] lg:pl-[10px]">
+        {contactFormInputs.map((input, index) => (
+          <FormField
+            key={index}
+            input={input}
+            value={getFormFieldValue(input.name)}
+            onChange={(e) => changeValue(input.name, e.target.value)}
           />
+        ))}
+        <div className="inline-block">
+          <Button isContrast type="submit">
+            Submit
+          </Button>
         </div>
-      ))}
+      </div>
     </form>
   );
 };
 
-export default MyFormComponent;
+export default ContactForm;
 ```
 
 ### Explanation

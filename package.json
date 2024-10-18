@@ -1,6 +1,6 @@
 {
     "name": "@maaniksharma/useform",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A custom React hook for managing form state",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
