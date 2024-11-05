@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 interface FormField {
   name: string;
-  initialValue: any;
   validateFunction?: (value: any) => boolean;
   value?: any;
 }
@@ -10,7 +9,7 @@ interface FormField {
 export function prepareFormFields(initialFormFields: any[]) {
   return initialFormFields.map((input) => ({
     name: input.name,
-    initialValue: input.initialValue || "",
+    value: input.initialValue || "",
     validateFunction: input.validateFunction,
   }));
 }
@@ -18,26 +17,20 @@ export function prepareFormFields(initialFormFields: any[]) {
 const useForm = (initialFormFields: FormField[]) => {
   const [formFields, setFormFields] = useState<FormField[]>(initialFormFields);
 
-  useEffect(() => {
-    setFormFields(
-      initialFormFields.map((formField) => ({
-        ...formField,
-        value: formField.initialValue,
-      }))
-    );
-  }, []);
-
   function findFormIndex(name: string) {
     const formFieldIndex = formFields.findIndex(
-      (formField: FormField) => formField.name === name
+      (formField) => formField.name === name
     );
     return formFieldIndex;
   }
 
   function validateValue(name: string): boolean {
+    console.log(name);
     const formFieldIndex = findFormIndex(name);
+
     if (formFieldIndex != -1) {
       const formField = formFields[formFieldIndex];
+      console.log(formField);
       if (formField.validateFunction) {
         return formField.validateFunction(formField.value);
       }
